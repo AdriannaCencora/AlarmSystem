@@ -23,13 +23,14 @@ public class Application {
         observableMovementMonitor.register(alarmControllerObserver);
 
         camera.startRecording();
-        if (shouldStoreVideo == true) {
+        if (shouldStoreVideo) {
             camera.storeVideo();
         }
     }
 
     public void disarmSystem() {
         sensors.off();
+        observableMovementMonitor.unregister(alarmControllerObserver);
         camera.stopRecording();
     }
 
@@ -43,16 +44,14 @@ public class Application {
 
     public void requestVideoTransmission() {
         camera.transmit();
-        observableMovementMonitor.setMovementDetectedStatus(true);
     }
 
     public void turnOnAlarm() {
-        alarmControllerObserver.soundAlarm();
-        alarmControllerObserver.alertSecurityGuard();
+       observableMovementMonitor.setMovementDetectedStatus(true);
     }
 
     public void turnOffAlarm() {
-        alarmControllerObserver.muteAlarm();
+        observableMovementMonitor.setMovementDetectedStatus(false);
     }
 
 

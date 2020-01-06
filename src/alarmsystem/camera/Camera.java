@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Camera {
     private boolean on = false;
     private Recording recording;
-    private ArrayList<Recording> recordings = new ArrayList<Recording>();
+    private ArrayList<Recording> recordings = new ArrayList<>();
 
     public void startRecording() {
         this.on = true;
@@ -25,10 +25,7 @@ public class Camera {
         Recording wantedRecording = new Recording(day, month, year);
         System.out.println(recording.getRecordingDetails());
 
-        if (recordings.contains(wantedRecording))
-            return true;
-        else
-            return false;
+        return recordings.contains(wantedRecording);
 
     }
 

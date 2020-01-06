@@ -9,7 +9,7 @@ public class ObservableMovementMonitor implements Observable {
 
     public ObservableMovementMonitor() {
         movementDetected = false;
-        observers = new ArrayList<Observer>();
+        observers = new ArrayList<>();
     }
 
     public void register(Observer o) {
