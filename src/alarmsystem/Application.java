@@ -7,21 +7,14 @@ public class Application {
 
     private Sensors sensors;
     private Camera camera;
-    private ObserverAlarmController alarmControllerObserver;
-    private ObservableMovementMonitor observableMovementMonitor;
 
    public Application() {
-
        sensors = new Sensors();
        camera = new Camera();
-       alarmControllerObserver = new ObserverAlarmController();
-       observableMovementMonitor = new ObservableMovementMonitor();
    }
 
     public void armSystem(boolean shouldStoreVideo) {
         sensors.on();
-        observableMovementMonitor.register(alarmControllerObserver);
-
         camera.startRecording();
         if (shouldStoreVideo) {
             camera.storeVideo();
@@ -30,7 +23,6 @@ public class Application {
 
     public void disarmSystem() {
         sensors.off();
-        observableMovementMonitor.unregister(alarmControllerObserver);
         camera.stopRecording();
     }
 
@@ -47,11 +39,9 @@ public class Application {
     }
 
     public void turnOnAlarm() {
-       observableMovementMonitor.setMovementDetectedStatus(true);
     }
 
     public void turnOffAlarm() {
-        observableMovementMonitor.setMovementDetectedStatus(false);
     }
 
 
