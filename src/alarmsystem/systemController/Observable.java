@@ -1,6 +1,4 @@
-package alarmsystem.sensors;
-
-import alarmsystem.systemController.Observer;
+package alarmsystem.systemController;
 
 public interface Observable {
 

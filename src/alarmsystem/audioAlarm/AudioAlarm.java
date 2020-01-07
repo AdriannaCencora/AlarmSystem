@@ -1,6 +1,6 @@
-package alarmsystem.alarm;
+package alarmsystem.audioAlarm;
 
-public class Alarm {
+public class AudioAlarm {
 
     public void muteAlarm() {
         System.out.println("Alarm has been muted");
