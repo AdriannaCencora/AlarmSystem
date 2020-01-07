@@ -30,13 +30,11 @@ public class Application {
             camera.storeVideo();
         }
         systemController.start();
-        systemController.monitorSystem();
     }
 
     public void disarmSystem() {
         sensors.off();
         camera.stopRecording();
-        systemController.monitorSystem();
         systemController.stop();
 
     }
@@ -55,12 +53,10 @@ public class Application {
 
     public void turnOnAlarm() {
         observableMovementTracer.setMovementTracerState(MovementTracerState.ABLE);
-        systemController.monitorSystem();
     }
 
     public void turnOffAlarm() {
         observableMovementTracer.setMovementTracerState(MovementTracerState.DISABLE);
-        systemController.monitorSystem();
     }
 
 

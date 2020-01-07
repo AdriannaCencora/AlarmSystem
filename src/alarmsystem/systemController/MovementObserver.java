@@ -10,9 +10,7 @@ public class MovementObserver implements Observer {
 
     public void update() {
         movementObserverState = observableMovementTracer.getMovementTracerState();
+        SystemController.monitorSystem(movementObserverState);
     }
 
-    public MovementTracerState getMovementObserverState() {
-        return movementObserverState;
-    }
 }

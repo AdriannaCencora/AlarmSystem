@@ -2,6 +2,7 @@ package alarmsystem.systemController;
 
 import alarmsystem.audioAlarm.AudioAlarm;
 
+
 public class SystemController {
     private AudioAlarm audioAlarm = new AudioAlarm();
     private MovementObserver movementObserver;
@@ -20,25 +21,23 @@ public class SystemController {
         observableMovementTracer.unregister(movementObserver);
     }
 
-    public void monitorSystem() {
-        if (movementObserver.getMovementObserverState().equals(MovementTracerState.ABLE)) {
-            audioAlarm.soundAlarm();
+    public static void monitorSystem(MovementTracerState currentState) {
+        if (currentState.equals(MovementTracerState.ABLE)) {
+            AudioAlarm.soundAlarm();
             alertSecurityGuard();
-            System.out.println("Alarm has been enabled. Current state is " + movementObserver.getMovementObserverState());
+            System.out.println("Alarm has been enabled. Current state is " + currentState);
         }
 
-        if (movementObserver.getMovementObserverState().equals(MovementTracerState.DISABLE)) {
-            audioAlarm.muteAlarm();
-            observableMovementTracer.setMovementTracerState(MovementTracerState.IDLE);
-            System.out.println("Alarm has been disabled. Current state is " + movementObserver.getMovementObserverState());
+        if (currentState.equals(MovementTracerState.DISABLE)) {
+            AudioAlarm.muteAlarm();
+            System.out.println("Alarm has been disabled. Current state is " + currentState);
         }
 
-        if (movementObserver.getMovementObserverState().equals(MovementTracerState.IDLE)) {
+        if (currentState.equals(MovementTracerState.IDLE)) {
             System.out.println("DO NOTHING <IDLE>");
         }
     }
-
-    private void alertSecurityGuard() {
+    private  static void alertSecurityGuard() {
         System.out.println("Unrecognized movement has been detected!!!!!!!!!!!!!!");
     }
 }

@@ -2,11 +2,11 @@ package alarmsystem.audioAlarm;
 
 public class AudioAlarm {
 
-    public void muteAlarm() {
+    public static void muteAlarm() {
         System.out.println("Alarm has been muted");
     }
 
-    public void soundAlarm() {
+    public static void soundAlarm() {
         System.out.println("<!!!!!!!!SOME LOAD ALARM SOUND!!!!!!!>");
     }
 
