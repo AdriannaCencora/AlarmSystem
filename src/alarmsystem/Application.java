@@ -1,20 +1,25 @@
 package alarmsystem;
 
 import alarmsystem.camera.Camera;
-import alarmsystem.sensors.Sensors;
+import alarmsystem.sensors.ObservableSensorsTracer;
+import alarmsystem.sensors.SensorsContext;
+import alarmsystem.systemController.ObserverSystemController;
 
 public class Application {
-
-    private Sensors sensors;
+    private SensorsContext sensorsContext;
     private Camera camera;
+    private ObserverSystemController observerSystemController = new ObserverSystemController();
+    private ObservableSensorsTracer observableSensorsTracer = new ObservableSensorsTracer();
 
    public Application() {
-       sensors = new Sensors();
+       observerSystemController = new ObserverSystemController();
+       observableSensorsTracer = new ObservableSensorsTracer();
+       sensorsContext = new SensorsContext(observerSystemController, observableSensorsTracer);
        camera = new Camera();
    }
 
     public void armSystem(boolean shouldStoreVideo) {
-        sensors.on();
+        sensorsContext.on();
         camera.startRecording();
         if (shouldStoreVideo) {
             camera.storeVideo();
@@ -22,7 +27,7 @@ public class Application {
     }
 
     public void disarmSystem() {
-        sensors.off();
+        sensorsContext.off();
         camera.stopRecording();
     }
 
@@ -39,9 +44,11 @@ public class Application {
     }
 
     public void turnOnAlarm() {
+        observableSensorsTracer.setMovementTracerState(true);
     }
 
     public void turnOffAlarm() {
+        observableSensorsTracer.setMovementTracerState(false);
     }
 
 
