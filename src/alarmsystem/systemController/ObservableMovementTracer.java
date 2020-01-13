@@ -22,7 +22,7 @@ public class ObservableMovementTracer implements Observable {
 
     public void notifyObserver() {
         for (Observer observer : movementSubscribers) {
-            observer.update();
+            observer.update(movementTracerState);
         }
     }
 

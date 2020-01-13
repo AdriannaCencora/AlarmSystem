@@ -4,7 +4,6 @@ import alarmsystem.audioAlarm.AudioAlarm;
 
 
 public class SystemController {
-    private AudioAlarm audioAlarm = new AudioAlarm();
     private MovementObserver movementObserver;
     private ObservableMovementTracer observableMovementTracer;
 

@@ -23,9 +23,9 @@ public class Application {
 
     }
 
-    public void armSystem(boolean shouldStoreVideo) {
+    public void armSystem(boolean shouldStoreVideo, int day, int month, int year) {
         sensors.on();
-        camera.startRecording();
+        camera.startRecording(day, month, year);
         if (shouldStoreVideo) {
             camera.storeVideo();
         }
@@ -39,8 +39,8 @@ public class Application {
 
     }
 
-    public void checkOldRecordings() {
-        if (camera.searchVideo(11, 2, 2009))
+    public void checkOldRecordings(int day, int month, int year) {
+        if (camera.searchVideo(day, month, year))
             System.out.println("Video exists.");
         else
             System.out.println("Video doesn't exists");

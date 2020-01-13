@@ -13,9 +13,8 @@ public class Sensors {
         System.out.println("Sensors off");
     }
 
-    /*public void changeMovementDetectorState(Boolean newState) {
-        observableMovementTracer.setMovementTracerState(newState);
+    public Boolean isAlive() {
+        return alive;
     }
 
-     */
 }

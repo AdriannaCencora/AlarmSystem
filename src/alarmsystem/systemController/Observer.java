@@ -1,5 +1,5 @@
 package alarmsystem.systemController;
 
 public interface Observer {
-    void update();
+    void update(MovementTracerState movementTracerState);
 }
